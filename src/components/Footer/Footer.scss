@@ -1,0 +1,189 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.footer {
+  background: v.$color-navy;
+  border-radius: v.$radius-xl v.$radius-xl 0 0;
+  margin-inline: v.$container-pad;
+  padding-top: v.$space-8;
+  color: v.$color-body-inverse;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: v.$space-8;
+    border-bottom: 1px solid v.$color-line-dark;
+
+    h2 {
+      color: v.$color-white;
+      font-size: v.$fs-h2;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 0.8fr 1fr 1.2fr;
+    gap: v.$space-6;
+    padding-block: v.$space-8;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: v.$space-2;
+    font-family: v.$font-display;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: v.$color-white;
+    margin-bottom: v.$space-4;
+  }
+
+  &__brand-mark {
+    @include m.flex-center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: v.$color-orange;
+    color: v.$color-white;
+    font-size: 0.75rem;
+  }
+
+  &__col p {
+    font-size: v.$fs-small;
+    max-width: 32ch;
+  }
+
+  &__col h4 {
+    color: v.$color-white;
+    font-size: 0.95rem;
+    margin-bottom: v.$space-4;
+  }
+
+  &__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-3;
+  }
+
+  &__col a {
+    font-size: v.$fs-small;
+    color: v.$color-body-inverse;
+    transition: color v.$dur-fast v.$ease-out;
+
+    &:hover {
+      color: v.$color-orange;
+    }
+  }
+
+  &__form {
+    display: flex;
+    background: v.$color-navy-soft;
+    border: 1px solid v.$color-line-dark;
+    border-radius: v.$radius-pill;
+    padding: 4px;
+    max-width: 260px;
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1rem;
+      color: v.$color-white;
+      font-size: v.$fs-small;
+      min-width: 0;
+
+      &::placeholder {
+        color: v.$color-body-inverse;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      @include m.flex-center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: v.$color-orange;
+      color: v.$color-white;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform v.$dur-fast v.$ease-out;
+
+      &:hover {
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: v.$space-5;
+    padding-block: v.$space-5;
+    border-top: 1px solid v.$color-line-dark;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  &__social {
+    display: flex;
+    gap: v.$space-3;
+
+    a {
+      @include m.flex-center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: v.$color-navy-soft;
+      color: v.$color-body-inverse;
+      transition: background v.$dur-fast v.$ease-out, color v.$dur-fast v.$ease-out;
+
+      &:hover {
+        background: v.$color-orange;
+        color: v.$color-white;
+      }
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: v.$space-5;
+
+    a:hover {
+      color: v.$color-orange;
+    }
+  }
+
+  @include m.mq(v.$bp-lg) {
+    &__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @include m.mq(v.$bp-md) {
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: v.$space-5;
+
+      h2 {
+        font-size: v.$fs-h2;
+      }
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

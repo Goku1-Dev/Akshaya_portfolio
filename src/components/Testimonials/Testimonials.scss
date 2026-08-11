@@ -1,0 +1,143 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.testimonials {
+  padding-inline: v.$container-pad;
+  margin-top: v.$space-8;
+
+  &__panel {
+    background:
+      radial-gradient(120% 160% at 100% 0%, rgba(253, 133, 57, 0.16), transparent 55%),
+      v.$color-navy;
+    border-radius: v.$radius-xl;
+    padding-block: v.$space-8;
+  }
+
+  &__head {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto v.$space-7;
+
+    h2 {
+      color: v.$color-white;
+      font-size: v.$fs-h2;
+      margin-bottom: v.$space-3;
+    }
+
+    p {
+      color: v.$color-body-inverse;
+      font-size: v.$fs-small;
+    }
+  }
+
+  &__carousel {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform v.$dur-slow v.$ease-in-out;
+  }
+
+  &__page {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: v.$space-5;
+  }
+
+  &__card {
+    background: v.$color-navy-soft;
+    border: 1px solid v.$color-line-dark;
+    border-radius: v.$radius-lg;
+    padding: v.$space-6;
+    margin: 0;
+  }
+
+  &__quote-mark {
+    font-family: v.$font-display;
+    font-size: 2.2rem;
+    color: v.$color-orange;
+    line-height: 0.4;
+    display: block;
+    margin-bottom: v.$space-3;
+  }
+
+  blockquote {
+    margin: 0 0 v.$space-6;
+    color: v.$color-body-inverse;
+    font-size: v.$fs-small;
+    line-height: 1.7;
+  }
+
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: v.$space-3;
+
+    > span:nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    strong {
+      color: v.$color-white;
+      font-size: 0.95rem;
+    }
+  }
+
+  &__role {
+    font-size: 0.78rem;
+    color: v.$color-body-inverse;
+  }
+
+  &__avatar {
+    @include m.flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: v.$color-orange;
+    color: v.$color-white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: v.$color-white;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: v.$space-2;
+    margin-top: v.$space-7;
+
+    button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: v.$color-line-dark;
+      cursor: pointer;
+
+      &.is-active {
+        background: v.$color-orange;
+        width: 24px;
+        border-radius: v.$radius-pill;
+      }
+    }
+  }
+
+  @include m.mq(v.$bp-md) {
+    &__page {
+      grid-template-columns: 1fr;
+    }
+  }
+}

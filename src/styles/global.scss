@@ -1,0 +1,152 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: v.$font-body;
+  color: v.$color-body;
+  background: v.$color-white;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: v.$font-display;
+  color: v.$color-ink;
+  margin: 0;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: v.$color-orange;
+  color: v.$color-white;
+}
+
+// ---- shared utility classes ----
+.container {
+  @include m.container;
+}
+
+.btn-primary {
+  @include m.button-primary;
+}
+
+.btn-outline {
+  @include m.button-outline;
+}
+
+.btn-outline-dark {
+  @include m.button-outline-dark;
+}
+
+.eyebrow {
+  @include m.eyebrow;
+}
+
+.accent {
+  color: v.$color-orange;
+}
+
+.reveal {
+  @include m.reveal;
+}
+
+// Stagger container: observer adds `.is-visible` to the parent;
+// children fade in in sequence via nth-child transition-delay.
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity v.$dur-slow v.$ease-out, transform v.$dur-slow v.$ease-out;
+  @include m.stagger(10);
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// visible keyboard focus everywhere by default
+:focus-visible {
+  outline: 3px solid v.$color-orange;
+  outline-offset: 2px;
+}

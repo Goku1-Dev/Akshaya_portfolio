@@ -1,0 +1,95 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.why-hire {
+  @include m.section-space;
+
+  &__panel {
+    background: v.$color-cloud;
+    border-radius: v.$radius-xl;
+    padding: v.$space-8;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: v.$space-8;
+    align-items: center;
+  }
+
+  &__figure {
+    position: relative;
+    aspect-ratio: 3 / 4;
+  }
+
+  &__figure-backdrop {
+    position: absolute;
+    inset: 4% 10%;
+    background: v.$color-orange;
+    border-radius: 45% 45% 40% 40% / 55% 55% 45% 45%;
+  }
+
+  &__figure svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 16px 24px rgba(22, 26, 43, 0.18));
+  }
+
+  &__content h2 {
+    font-size: v.$fs-h2;
+    margin-bottom: v.$space-4;
+  }
+
+  &__desc {
+    max-width: 46ch;
+    margin-bottom: v.$space-6;
+  }
+
+  &__stats {
+    display: flex;
+    gap: v.$space-8;
+    margin-bottom: v.$space-6;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__stat-value {
+    font-family: v.$font-display;
+    font-size: 2rem;
+    color: v.$color-ink;
+    font-weight: 700;
+  }
+
+  &__stat-label {
+    font-size: v.$fs-small;
+    color: v.$color-body;
+  }
+
+  @include m.mq(v.$bp-lg) {
+    &__panel {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: v.$space-6;
+    }
+
+    &__figure {
+      max-width: 240px;
+      margin-inline: auto;
+    }
+
+    &__desc {
+      margin-inline: auto;
+    }
+
+    &__stats {
+      justify-content: center;
+    }
+  }
+
+  @include m.mq(v.$bp-sm) {
+    &__stats {
+      gap: v.$space-6;
+    }
+  }
+}

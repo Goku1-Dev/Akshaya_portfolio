@@ -1,0 +1,206 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-top: v.$space-5;
+  transition: padding v.$dur-base v.$ease-out;
+
+  &.is-scrolled {
+    padding-top: v.$space-3;
+
+    .site-header__bar {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      box-shadow: v.$shadow-card;
+    }
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: v.$space-6;
+    background: v.$color-white;
+    border-radius: v.$radius-pill;
+    padding: v.$space-2 v.$space-3;
+    transition: background v.$dur-base v.$ease-out, box-shadow v.$dur-base v.$ease-out;
+  }
+
+  &__home .site-header__pill {
+    display: inline-flex;
+    align-items: center;
+    background: v.$color-orange;
+    color: v.$color-white;
+    font-weight: 700;
+    font-size: v.$fs-small;
+    padding: 0.6rem 1.3rem;
+    border-radius: v.$radius-pill;
+  }
+
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    ul {
+      display: flex;
+      gap: v.$space-6;
+    }
+
+    a {
+      font-weight: 600;
+      font-size: v.$fs-small;
+      color: v.$color-ink;
+      opacity: 0.75;
+      position: relative;
+      padding-bottom: 4px;
+      transition: opacity v.$dur-fast v.$ease-out;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: 0;
+        height: 2px;
+        background: v.$color-orange;
+        transition: right v.$dur-base v.$ease-out;
+      }
+
+      &:hover,
+      &.is-active {
+        opacity: 1;
+      }
+
+      &:hover::after,
+      &.is-active::after {
+        right: 0;
+      }
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: v.$space-2;
+    font-family: v.$font-display;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: v.$color-ink;
+  }
+
+  &__brand-mark {
+    @include m.flex-center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: v.$color-orange;
+    color: v.$color-white;
+    font-size: 0.8rem;
+  }
+
+  &__cta {
+    display: inline-flex;
+    background: v.$color-navy;
+    color: v.$color-white;
+    font-weight: 700;
+    font-size: v.$fs-small;
+    padding: 0.6rem 1.3rem;
+    border-radius: v.$radius-pill;
+    transition: background v.$dur-fast v.$ease-out, transform v.$dur-fast v.$ease-out;
+
+    &:hover {
+      background: v.$color-orange;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: v.$color-cloud;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+
+    span {
+      width: 16px;
+      height: 2px;
+      background: v.$color-ink;
+      border-radius: 2px;
+      transition: transform v.$dur-fast v.$ease-out, opacity v.$dur-fast v.$ease-out;
+    }
+
+    &.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    &.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+    &.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+
+  &__mobile {
+    max-height: 0;
+    overflow: hidden;
+    background: v.$color-white;
+    margin-inline: v.$container-pad;
+    border-radius: v.$radius-md;
+    transition: max-height v.$dur-base v.$ease-out, box-shadow v.$dur-base v.$ease-out,
+      margin-top v.$dur-base v.$ease-out;
+
+    &.is-open {
+      max-height: 400px;
+      margin-top: v.$space-3;
+      box-shadow: v.$shadow-card;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: v.$space-4;
+    }
+
+    a {
+      display: block;
+      padding: v.$space-3 v.$space-2;
+      font-weight: 600;
+      color: v.$color-ink;
+      border-bottom: 1px solid v.$color-line;
+    }
+
+    li:last-child a {
+      border-bottom: none;
+    }
+  }
+
+  @include m.mq(v.$bp-lg) {
+    &__nav {
+      display: none;
+    }
+
+    &__home {
+      display: none;
+    }
+
+    &__burger {
+      display: flex;
+    }
+  }
+
+  @include m.mq(v.$bp-sm) {
+    &__cta {
+      display: none;
+    }
+  }
+}

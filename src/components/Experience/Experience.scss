@@ -1,0 +1,123 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.experience {
+  @include m.section-space;
+
+  &__head {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto v.$space-8;
+
+    .eyebrow {
+      justify-content: center;
+      display: flex;
+    }
+
+    h2 {
+      font-size: v.$fs-h2;
+      margin-top: v.$space-2;
+    }
+  }
+
+  &__timeline {
+    position: relative;
+    max-width: 900px;
+    margin-inline: auto;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      bottom: 8px;
+      width: 0;
+      border-left: 2px dashed v.$color-line;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+    gap: v.$space-5;
+    padding-block: v.$space-5;
+
+    &.is-reversed .experience__col:first-child {
+      text-align: right;
+    }
+  }
+
+  &__col {
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: v.$space-1;
+    }
+  }
+
+  &__period {
+    font-size: v.$fs-small;
+    color: v.$color-body;
+    margin-bottom: v.$space-1;
+  }
+
+  &__desc {
+    font-size: v.$fs-small;
+    max-width: 30ch;
+  }
+
+  &__node {
+    @include m.flex-center;
+    position: relative;
+    z-index: 1;
+
+    span {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: v.$color-white;
+      border: 3px solid v.$color-orange;
+    }
+  }
+
+  &__row:nth-child(2n) &__node span {
+    border-color: v.$color-ink;
+  }
+
+  @include m.mq(v.$bp-md) {
+    &__timeline::before {
+      left: 9px;
+    }
+
+    &__row,
+    &__row.is-reversed {
+      grid-template-columns: 20px 1fr;
+      grid-template-rows: auto auto;
+      row-gap: v.$space-2;
+      text-align: left;
+    }
+
+    &__col--meta {
+      grid-column: 2;
+      grid-row: 1;
+      text-align: left !important;
+    }
+
+    &__col--role {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    &__node {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      align-self: start;
+      margin-top: 4px;
+    }
+
+    &__desc {
+      max-width: none;
+    }
+  }
+}
