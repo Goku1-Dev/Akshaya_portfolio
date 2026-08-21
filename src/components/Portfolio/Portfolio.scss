@@ -19,6 +19,13 @@
   &__carousel {
     position: relative;
     overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+
+    &.is-dragging {
+      cursor: grabbing;
+    }
   }
 
   &__track {
@@ -47,6 +54,7 @@
     padding: v.$space-5;
     overflow: hidden;
     isolation: isolate;
+    pointer-events: none;
 
     &::after {
       content: '';
@@ -79,6 +87,7 @@
     background: v.$color-ink;
     color: v.$color-white;
     transition: transform v.$dur-fast v.$ease-out;
+    pointer-events: auto;
 
     &:hover {
       transform: rotate(45deg);

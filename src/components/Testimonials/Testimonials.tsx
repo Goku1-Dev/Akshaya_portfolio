@@ -11,7 +11,7 @@ import './Testimonials.scss';
 export default function Testimonials() {
   const headingRef = useReveal<HTMLDivElement>();
   const perView = useResponsivePerView([[1024, 3], [640, 2], [0, 1]], 1);
-  const { page, pageCount, goTo, handlers } = useCarousel({
+  const { page, pageCount, goTo, handlers, isDragging, dragOffsetPercent } = useCarousel({
     count: learningReflection.items.length,
     perView,
     autoplayMs: 6000,
@@ -28,8 +28,17 @@ export default function Testimonials() {
             <p>{learningReflection.description}</p>
           </div>
 
-          <div className="testimonials__carousel" {...handlers}>
-            <div className="testimonials__track" style={{ transform: `translateX(-${page * 100}%)` }}>
+          <div
+            className={`testimonials__carousel${isDragging ? ' is-dragging' : ''}`}
+            {...handlers}
+          >
+            <div
+              className="testimonials__track"
+              style={{
+                transform: `translateX(calc(-${page * 100}% + ${dragOffsetPercent}%))`,
+                transition: isDragging ? 'none' : undefined,
+              }}
+            >
               {Array.from({ length: pageCount }).map((_, pageIndex) => (
                 <div className="testimonials__page" key={pageIndex}>
                   {learningReflection.items

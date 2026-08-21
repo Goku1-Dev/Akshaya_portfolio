@@ -15,7 +15,7 @@ export default function Portfolio() {
   );
 
   const perView = useResponsivePerView([[860, 2], [0, 1]], 1);
-  const { page, pageCount, next, prev, goTo, handlers } = useCarousel({
+  const { page, pageCount, next, prev, goTo, handlers, isDragging, dragOffsetPercent } = useCarousel({
     count: filtered.length,
     perView,
   });
@@ -36,8 +36,17 @@ export default function Portfolio() {
           </a>
         </div>
 
-        <div className="portfolio__carousel" {...handlers}>
-          <div className="portfolio__track" style={{ transform: `translateX(-${page * 100}%)` }}>
+        <div
+          className={`portfolio__carousel${isDragging ? ' is-dragging' : ''}`}
+          {...handlers}
+        >
+          <div
+            className="portfolio__track"
+            style={{
+              transform: `translateX(calc(-${page * 100}% + ${dragOffsetPercent}%))`,
+              transition: isDragging ? 'none' : undefined,
+            }}
+          >
             {Array.from({ length: pageCount }).map((_, pageIndex) => (
               <div className="portfolio__page" key={pageIndex}>
                 {filtered
