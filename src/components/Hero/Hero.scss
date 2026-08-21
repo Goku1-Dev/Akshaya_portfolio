@@ -55,9 +55,9 @@
 
   &__backdrop {
     position: absolute;
-    inset: 6% 8% 0 8%;
+    inset: 5% 8% 0 8%;
     background: v.$color-orange;
-    border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+    border-radius: 85%;
     z-index: 0;
   }
 
@@ -183,9 +183,43 @@
   }
 
   @include m.mq(v.$bp-sm) {
+    &__title {
+      font-size: clamp(1.6rem, 7vw, 2.1rem);
+      max-width: 18ch;
+    }
+
+    &__portrait-wrap {
+      width: 100%;
+      margin-top: v.$space-6;
+    }
+
+    &__backdrop {
+      inset: 0% 10% 45% 10%;
+      border-radius: 50% 50% 42% 42% / 55% 55% 45% 45%;
+    }
+
+    &__portrait {
+      width: min(240px, 62vw);
+    }
+
+    &__aside {
+      max-width: 90%;
+      width: auto;
+      padding: v.$space-3 v.$space-4;
+    }
+
+    &__aside--right {
+      margin-top: v.$space-3;
+    }
+
+    &__years strong {
+      font-size: 1.1rem;
+    }
+
     &__cta-group {
       flex-direction: column;
       width: 100%;
+      gap: v.$space-2;
 
       a {
         width: 100%;
