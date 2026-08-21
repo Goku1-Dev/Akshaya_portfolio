@@ -4,21 +4,6 @@ import JennyPortrait from '../illustrations/JennyPortrait';
 import { useReveal } from '../../hooks/useReveal';
 import './Hero.scss';
 
-function StarRow({ count }: { count: number }) {
-  return (
-    <div className="hero__stars" aria-label={`${count} out of 5 stars`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
-          <path
-            fill={i < count ? '#ffb020' : '#e7e5f0'}
-            d="M10 1.5l2.6 5.6 6.1.7-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.8l6.1-.7L10 1.5z"
-          />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export default function Hero() {
   const titleRef = useReveal<HTMLHeadingElement>();
   const asideRef = useReveal<HTMLDivElement>();
@@ -54,10 +39,11 @@ export default function Hero() {
           </div>
 
           <div className="hero__aside hero__aside--right">
-            <StarRow count={hero.rating} />
+            {/* Honest status badge — replaces the old star-rating +
+                "X years experience" block, which overstated her status. */}
             <p className="hero__years">
-              <strong>{hero.experienceYears} Years</strong>
-              <span>Experience</span>
+              <strong>{hero.statusBadge.value}</strong>
+              <span>{hero.statusBadge.label}</span>
             </p>
           </div>
 

@@ -43,8 +43,13 @@
     margin-bottom: v.$space-6;
   }
 
+  &__goal {
+    margin-top: calc(-1 * v.$space-4);
+  }
+
   &__stats {
     display: flex;
+    flex-wrap: wrap;
     gap: v.$space-8;
     margin-bottom: v.$space-6;
   }
@@ -52,6 +57,15 @@
   &__stat {
     display: flex;
     flex-direction: column;
+
+    &--placeholder {
+      max-width: 22ch;
+
+      .why-hire__stat-label {
+        font-style: italic;
+        opacity: 0.75;
+      }
+    }
   }
 
   &__stat-value {

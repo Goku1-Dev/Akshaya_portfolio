@@ -59,6 +59,10 @@ export default function Services() {
                     .map((item, i) => (
                       <article className="services__card" key={item.title}>
                         <div className="services__icon">{icons[(pageIndex * perView + i) % icons.length]}</div>
+                        <div className="services__tags">
+                          <span className="services__tag">{item.tag}</span>
+                          <span className="services__tag services__tag--exposure">{item.exposureLevel}</span>
+                        </div>
                         <h3>{item.title}</h3>
                         <p>{item.description}</p>
                         <a className="services__link" href="#contact" aria-label={`Learn more about ${item.title}`}>

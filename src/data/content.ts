@@ -1,5 +1,10 @@
 // Central content file — all portfolio copy lives here.
-// Content customized for Akshaya, Final Year Critical Care Technology Student.
+// Content for Akshaya, 3rd Year Critical Care Technology Student.
+//
+// PLACEHOLDER POLICY: any value wrapped in [ ] is a placeholder that must be
+// replaced with real information before publishing. Never delete a
+// placeholder to "fill the gap" with invented facts — leave it bracketed
+// until the real detail is supplied.
 
 export const nav = {
   brand: 'AKSHAYA',
@@ -7,8 +12,9 @@ export const nav = {
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#services' },
-    { label: 'Resume', href: '#resume' },
+    { label: 'Clinical Journey', href: '#clinical-journey' },
     { label: 'Projects', href: '#portfolio' },
+    { label: 'Resume', href: '#resume' },
     { label: 'Contact', href: '#contact' },
   ],
 };
@@ -19,12 +25,16 @@ export const hero = {
     { text: "I'm", accent: false },
     { text: 'Akshaya,', accent: true },
   ],
-  subtitle: 'Critical Care Technology Student',
+  subtitle: '3rd Year Critical Care Technology Student',
   quote:
-    'Dedicated to providing compassionate patient care and supporting critical care teams with clinical knowledge, technical skills, and a strong commitment to healthcare.',
-  rating: 5,
-  experienceYears: 4,
-  ctaPrimary: { label: 'View Projects', href: '#portfolio' },
+    'Building clinical knowledge and technical skills through academic learning, supervised hospital training, and hands-on exposure to critical care environments.',
+  // Replaces the old star-rating + "X years experience" block, which
+  // overstated her status. This renders as a simple, honest status badge.
+  statusBadge: {
+    value: '3rd',
+    label: 'Year Student',
+  },
+  ctaPrimary: { label: 'View Clinical Journey', href: '#clinical-journey' },
   ctaSecondary: { label: 'Contact Me', href: '#contact' },
 };
 
@@ -35,70 +45,228 @@ export const services = {
     { text: 'Skills', accent: true },
   ],
   description:
-    'Developing strong clinical and technical skills through academic learning, practical training, and hands-on exposure to critical care environments.',
+    'Developing clinical, technical, and professional skills through academic coursework, supervised hospital training, and hands-on exposure to critical care environments.',
   items: [
     {
-      title: 'Critical Care Support',
+      title: 'Patient Monitoring',
       description:
-        'Understanding patient monitoring, critical care procedures, and the role of healthcare professionals in intensive care environments.',
-      tag: 'Critical Care',
+        'Understanding how vital signs and clinical parameters of critically ill patients are observed and recorded under supervision.',
+      tag: 'Clinical Knowledge',
+      exposureLevel: 'Clinical Exposure',
+    },
+    {
+      title: 'Critical Care Fundamentals',
+      description:
+        'Academic understanding of critical care concepts, patient safety principles, and the role of the care team in intensive care settings.',
+      tag: 'Clinical Knowledge',
+      exposureLevel: 'Academic Knowledge',
+    },
+    {
+      title: 'Infection Control Awareness',
+      description:
+        'Learning hygiene protocols and infection-prevention practices followed in hospital and critical care environments.',
+      tag: 'Clinical Knowledge',
+      exposureLevel: 'Academic Knowledge',
+    },
+    {
+      title: 'ICU Equipment Awareness',
+      description:
+        'Familiarity with commonly used critical care equipment and its role in patient monitoring and support.',
+      tag: 'Technical Knowledge',
+      exposureLevel: 'Familiar With',
+    },
+    {
+      title: 'Basic Clinical Documentation',
+      description:
+        'Developing a basic understanding of how patient information and clinical observations are recorded in a hospital setting.',
+      tag: 'Technical Knowledge',
+      exposureLevel: 'Learning',
+    },
+    {
+      title: 'Teamwork & Communication',
+      description:
+        'Developing the ability to work within a multidisciplinary healthcare team and communicate clearly in a clinical environment.',
+      tag: 'Professional Skills',
+      exposureLevel: 'Developing',
+    },
+  ],
+};
+
+// Clinical Training Journey — year-wise timeline (was "experience").
+// Nav item: "Clinical Journey" → #clinical-journey.
+export const clinicalJourney = {
+  eyebrow: 'Clinical Journey',
+  title: [
+    { text: 'My Clinical Training', accent: false },
+    { text: 'Journey', accent: true },
+  ],
+  items: [
+    {
+      yearLabel: 'Year 1 — Foundation Clinical Exposure',
+      company: '[Hospital Name]',
+      period: '[Training Period]',
+      role: 'Student Clinical Exposure',
+      description:
+        'Gained early exposure to hospital environments and a foundational understanding of patient care, hygiene practices, and clinical routines under supervision.',
+    },
+    {
+      yearLabel: 'Year 2 — Hospital & Patient Care Training',
+      company: '[Hospital Name]',
+      period: '[Training Period]',
+      role: 'Clinical Training',
+      description:
+        'Observed and learned about ward workflows, patient monitoring basics, infection control practices, and the importance of teamwork in a clinical setting.',
+    },
+    {
+      yearLabel: 'Year 3 — Advanced Clinical Exposure',
+      company: '[Hospital Name / Department]',
+      period: '[Training Period]',
+      role: 'Clinical Posting',
+      description:
+        'Strengthening clinical knowledge through hands-on learning, patient observation, equipment awareness, and interaction with multidisciplinary healthcare teams.',
+    },
+    {
+      yearLabel: 'Year 4 — Internship (Upcoming)',
+      company: '[Hospital Name — To Be Confirmed]',
+      period: 'Upcoming',
+      role: 'Major Clinical Internship',
+      description:
+        'Preparing academically and clinically to begin her major internship, where she looks forward to gaining deeper practical exposure under professional supervision.',
+      isUpcoming: true,
+    },
+  ],
+};
+
+// Clinical Areas & Hospital Exposure — rendered via <InfoCardGrid>.
+export const clinicalAreas = {
+  id: 'clinical-areas',
+  eyebrow: 'Hospital Exposure',
+  title: [
+    { text: 'Clinical Areas &', accent: false },
+    { text: 'Hospital Exposure', accent: true },
+  ],
+  description:
+    'Areas of the hospital and critical care environment I have been exposed to during academic clinical training.',
+  items: [
+    {
+      title: 'Intensive Care Unit',
+      description:
+        'Observed ICU workflows, patient monitoring routines, and the coordination between nursing and technical staff.',
+      tag: 'Clinical Exposure',
     },
     {
       title: 'Patient Monitoring',
       description:
-        'Knowledge of monitoring vital signs and understanding basic clinical parameters of critically ill patients under professional supervision.',
-      tag: 'Monitoring',
+        'Learned how vital signs and clinical parameters are continuously tracked for critically ill patients.',
+      tag: 'Clinical Exposure',
     },
     {
-      title: 'Clinical Practice',
+      title: 'Infection Control',
       description:
-        'Building practical knowledge through clinical training, teamwork, patient observation, and exposure to hospital environments.',
-      tag: 'Clinical',
+        'Observed hygiene protocols and infection-prevention practices followed within hospital units.',
+      tag: 'Academic Learning',
+    },
+    {
+      title: 'Multidisciplinary Team Environment',
+      description:
+        'Gained awareness of how doctors, nurses, and technicians coordinate patient care as a team.',
+      tag: 'Observed',
     },
   ],
 };
 
-export const experience = {
-  eyebrow: 'Clinical Experience',
+// Critical Care Equipment — rendered via <InfoCardGrid>.
+// Reflects study/observation only — never independent operation.
+export const equipment = {
+  id: 'equipment',
+  eyebrow: 'Critical Care Technology',
   title: [
-    { text: 'My Clinical', accent: false },
-    { text: 'Experience', accent: true },
+    { text: 'Critical Care', accent: false },
+    { text: 'Equipment', accent: true },
   ],
+  description:
+    'Equipment I have studied or observed in a clinical setting as part of academic and hospital training. This reflects exposure and learning, not independent operation.',
   items: [
     {
-      company: 'Clinical Training',
-      period: 'Academic Clinical Training',
-      role: 'Critical Care Technology Student',
+      title: 'Patient Monitor',
       description:
-        'Gained practical exposure to hospital environments and developed an understanding of patient care, clinical procedures, monitoring, and critical care practices under professional supervision.',
+        'Studied how patient monitors display vital signs such as heart rate, blood pressure, and oxygen saturation.',
+      tag: 'Observed',
     },
     {
-      company: 'Intensive Care Unit',
-      period: 'Clinical Posting',
-      role: 'Critical Care Technology Trainee',
-      description:
-        'Observed and learned about ICU workflows, patient monitoring, infection control practices, emergency procedures, and the importance of teamwork in critical care.',
+      title: 'Pulse Oximeter',
+      description: 'Learned how this device is used to measure oxygen saturation in patients.',
+      tag: 'Academic Knowledge',
     },
     {
-      company: 'Hospital Clinical Exposure',
-      period: 'Final Year Training',
-      role: 'Critical Care Technology Intern',
+      title: 'Infusion Pump',
       description:
-        'Strengthening clinical knowledge and practical skills through hands-on learning, patient observation, equipment awareness, and interaction with multidisciplinary healthcare teams.',
+        'Gained a basic understanding of how infusion pumps are used to regulate fluid and medication delivery.',
+      tag: 'Observed',
+    },
+    {
+      title: 'ECG',
+      description: 'Studied the basics of ECG monitoring and its role in assessing cardiac activity.',
+      tag: 'Academic Knowledge',
     },
   ],
 };
+
+// Certifications — rendered via <InfoCardGrid>. Replace placeholders with
+// real certification details as they become available.
+export const certifications = {
+  id: 'certifications',
+  eyebrow: 'Certifications',
+  title: [
+    { text: 'My', accent: false },
+    { text: 'Certifications', accent: true },
+  ],
+  description: 'Certifications completed during academic training.',
+  items: [
+    {
+      title: '[Certification Name]',
+      description: 'Issued by [Issuing Organization] · [Completion Date]',
+      tag: '[Certificate ID]',
+    },
+  ],
+};
+
+// Workshops & Seminars — rendered via <InfoCardGrid>. Replace placeholders
+// with real event details as they become available.
+export const workshops = {
+  id: 'workshops',
+  eyebrow: 'Workshops & Seminars',
+  title: [
+    { text: 'Workshops &', accent: false },
+    { text: 'Seminars', accent: true },
+  ],
+  description: 'Healthcare workshops, seminars, and academic events attended during her training.',
+  items: [
+    {
+      title: '[Workshop / Seminar Name]',
+      description: 'Organized by [Organization] · [Date]',
+      tag: 'Academic Event',
+    },
+  ],
+};
+
+// NOTE — Achievements section intentionally omitted.
+// Per content policy: only build this section once real achievements
+// (academic honors, paper/poster presentations, competitions, volunteering)
+// are supplied. Do not fill it with placeholder content in the meantime.
 
 export const whyHireMe = {
   title: [
-    { text: 'Why', accent: false },
-    { text: 'Choose me?', accent: true },
+    { text: 'About', accent: false },
+    { text: 'Me', accent: true },
   ],
   description:
-    'I am a dedicated and responsible Critical Care Technology student with a strong interest in patient care, clinical practice, and critical care environments. I am eager to learn, improve my skills, and contribute positively to a healthcare team.',
+    'I am a 3rd year Critical Care Technology student building my clinical knowledge and technical skills through academic coursework and supervised hospital training. I am developing an understanding of patient monitoring, critical care fundamentals, and hospital workflows, and I am eager to keep learning from experienced healthcare teams.',
+  careerGoal:
+    'My goal is to build a career in Critical Care Technology — strengthening my clinical and technical skills, developing patient-centered care habits, and learning from experienced healthcare professionals as I move into my internship year and beyond.',
   stats: [
-    { value: 4, suffix: '+', label: 'Years of Academic Learning' },
-    { value: 3, suffix: '+', label: 'Clinical Training Areas' },
+    { value: 3, suffix: '', label: 'Year Student' },
+    { label: '[Number] Clinical Training Areas — to be confirmed' },
   ],
   cta: { label: 'Contact Me', href: '#contact' },
 };
@@ -123,6 +291,11 @@ export const portfolio = {
       tag: 'Critical Care',
       description:
         'An academic project focused on understanding vital signs, patient monitoring, and the importance of continuous observation in critical care settings.',
+      objective: '[Project Objective]',
+      studied: '[What Was Studied]',
+      contribution: "[Akshaya's Contribution]",
+      outcome: '[Key Learning / Outcome]',
+      status: 'Completed',
       accent: '#fd8539',
     },
     {
@@ -130,6 +303,11 @@ export const portfolio = {
       tag: 'Medical Equipment',
       description:
         'A study of commonly used critical care equipment and their basic functions in supporting the monitoring and management of critically ill patients.',
+      objective: '[Project Objective]',
+      studied: '[What Was Studied]',
+      contribution: "[Akshaya's Contribution]",
+      outcome: '[Key Learning / Outcome]',
+      status: 'Completed',
       accent: '#5b6bff',
     },
     {
@@ -137,6 +315,11 @@ export const portfolio = {
       tag: 'Patient Care',
       description:
         'An academic study covering patient safety, infection prevention, hygiene practices, and the importance of maintaining a safe critical care environment.',
+      objective: '[Project Objective]',
+      studied: '[What Was Studied]',
+      contribution: "[Akshaya's Contribution]",
+      outcome: '[Key Learning / Outcome]',
+      status: 'Completed',
       accent: '#2fb897',
     },
     {
@@ -144,6 +327,11 @@ export const portfolio = {
       tag: 'Clinical Learning',
       description:
         'A learning project focused on understanding emergency care procedures, rapid patient assessment, and the importance of timely clinical support.',
+      objective: '[Project Objective]',
+      studied: '[What Was Studied]',
+      contribution: "[Akshaya's Contribution]",
+      outcome: '[Key Learning / Outcome]',
+      status: 'Upcoming Project',
       accent: '#e0507a',
     },
     {
@@ -151,47 +339,47 @@ export const portfolio = {
       tag: 'Academic',
       description:
         'A collection of academic learning, clinical exposure, skills, and experiences developed throughout the Critical Care Technology program.',
+      objective: '[Project Objective]',
+      studied: '[What Was Studied]',
+      contribution: "[Akshaya's Contribution]",
+      outcome: '[Key Learning / Outcome]',
+      status: 'Completed',
       accent: '#b47cff',
     },
   ],
 };
 
-export const testimonials = {
+// Learning Reflection — replaces fabricated third-party testimonials.
+// First-person only; no invented names, roles, or quotes attributed to
+// faculty/supervisors. Reintroduce real named testimonials only once
+// verified quotes (with permission) are supplied.
+export const learningReflection = {
   title: [
-    { text: 'Learning That', accent: false },
-    { text: 'Builds My', accent: false },
-    { text: 'Confidence', accent: true },
+    { text: 'What Clinical Training', accent: false },
+    { text: 'Has Taught Me', accent: true },
   ],
   description:
     'My academic journey and clinical training have helped me develop discipline, responsibility, teamwork, and a deeper understanding of patient-centered critical care.',
   items: [
     {
-      name: 'Clinical Faculty',
-      role: 'Academic Mentor',
-      rating: 5.0,
-      quote:
-        'Akshaya is a dedicated student who shows genuine interest in learning clinical procedures and understanding the responsibilities involved in critical care.',
+      theme: 'Discipline',
+      reflection:
+        'Clinical training has taught me the importance of showing up prepared, following protocol carefully, and taking responsibility for the small details that matter in patient care.',
     },
     {
-      name: 'Clinical Supervisor',
-      role: 'Clinical Training',
-      rating: 5.0,
-      quote:
-        'She approaches clinical learning with sincerity and demonstrates a willingness to improve her knowledge and practical skills.',
+      theme: 'Teamwork',
+      reflection:
+        'Observing multidisciplinary hospital teams has shown me how critical care depends on clear communication and coordination between doctors, nurses, and technicians.',
     },
     {
-      name: 'Academic Team',
-      role: 'Healthcare Education',
-      rating: 5.0,
-      quote:
-        'Akshaya has developed a strong foundation in critical care concepts and continues to improve through practical learning and clinical exposure.',
+      theme: 'Patient-Centered Thinking',
+      reflection:
+        'Being present in clinical environments has helped me understand that every observation and procedure exists to support the patient, not just to complete a task.',
     },
     {
-      name: 'Training Team',
-      role: 'Hospital Clinical Exposure',
-      rating: 5.0,
-      quote:
-        'Her responsible attitude, willingness to learn, and interest in patient care make her a promising healthcare professional in the field of Critical Care Technology.',
+      theme: 'Continuous Learning',
+      reflection:
+        'Every clinical posting has reminded me how much there is still to learn, and has built my motivation to keep strengthening my knowledge before my internship.',
     },
   ],
 };
@@ -203,12 +391,12 @@ export const cta = {
     { text: "Let's Connect", accent: true },
   ],
   description:
-    'I am looking forward to starting my professional journey in healthcare, gaining valuable clinical experience, and contributing to a dedicated critical care team.',
+    'I am looking forward to my upcoming internship, gaining valuable clinical experience, and contributing to a dedicated critical care team.',
   placeholder: 'Enter Email Address',
   button: 'Send',
   trustPoints: [
     'Dedicated Critical Care Student',
-    'Clinical Training Experience',
+    'Hands-On Clinical Exposure',
     'Passionate About Patient Care',
   ],
 };
@@ -236,24 +424,39 @@ export const blog = {
       title: 'Understanding the Role of Critical Care Technology',
       tag: 'Critical Care',
       author: 'Akshaya',
-      date: 'Final Year',
+      date: '3rd Year',
       accent: '#7b6ef6',
     },
     {
       title: 'Importance of Patient Monitoring in Critical Care',
       tag: 'Patient Monitoring',
       author: 'Akshaya',
-      date: 'Final Year',
+      date: '3rd Year',
       accent: '#0f9d6c',
     },
     {
       title: 'Learning Through Clinical Training and Hospital Exposure',
       tag: 'Clinical Learning',
       author: 'Akshaya',
-      date: 'Final Year',
+      date: '3rd Year',
       accent: '#f2a900',
     },
   ],
+};
+
+// Resume section — id="resume", the actual nav target for "Resume".
+export const resume = {
+  eyebrow: 'Resume',
+  title: [
+    { text: 'View My', accent: false },
+    { text: 'Resume', accent: true },
+  ],
+  description:
+    'A summary of my academic background, clinical training, skills, and certifications as a 3rd year Critical Care Technology student.',
+  viewLabel: 'View Resume',
+  downloadLabel: 'Download Resume',
+  // Replace with the real resume file path once available, e.g. '/resume-akshaya.pdf'.
+  fileUrl: '#',
 };
 
 export const footer = {
@@ -264,7 +467,7 @@ export const footer = {
   ],
   cta: { label: 'Contact Me', href: '#contact' },
   description:
-    'Final Year Critical Care Technology student passionate about patient care, clinical learning, and building a meaningful career in the healthcare field.',
+    '3rd Year Critical Care Technology student passionate about patient care, clinical learning, and building a meaningful career in the healthcare field.',
   columns: [
     {
       title: 'Navigation',
@@ -272,10 +475,11 @@ export const footer = {
     },
   ],
   contact: {
-    phone: '+91 XXXXXXXXXX',
-    email: 'akshaya@example.com',
+    phone: '[Phone Number]',
+    email: '[Email Address]',
   },
-  social: ['facebook', 'twitter', 'instagram', 'linkedin'],
+  // Only professionally relevant networks — add others back only if Akshaya wants them public.
+  social: ['linkedin'],
   legal: ['User Terms & Conditions', 'Privacy Policy'],
   copyright: '© 2026 Akshaya. All Rights Reserved.',
 };

@@ -1,0 +1,57 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.resume-section {
+  @include m.section-space;
+  padding-inline: v.$container-pad;
+
+  &__panel {
+    @include m.card-surface;
+    background: v.$color-cream;
+    box-shadow: none;
+    border: 1px solid v.$color-line;
+    padding: v.$space-7 v.$space-8;
+    max-width: v.$container-max;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: v.$space-6;
+    flex-wrap: wrap;
+
+    h2 {
+      font-size: v.$fs-h2;
+      margin-top: v.$space-2;
+    }
+  }
+
+  &__desc {
+    max-width: 48ch;
+    font-size: v.$fs-small;
+    color: v.$color-body;
+    margin-top: v.$space-3;
+  }
+
+  &__actions {
+    display: flex;
+    gap: v.$space-3;
+    flex-wrap: wrap;
+  }
+
+  @include m.mq(v.$bp-md) {
+    &__panel {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    &__actions {
+      width: 100%;
+
+      a {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  }
+}

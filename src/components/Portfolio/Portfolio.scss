@@ -164,6 +164,50 @@
     }
   }
 
+  &__status {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.65rem;
+    border-radius: v.$radius-pill;
+    background: rgba(47, 184, 151, 0.15);
+    color: #1f8f70;
+
+    &.is-upcoming {
+      background: v.$color-orange-light;
+      color: v.$color-orange-dark;
+    }
+  }
+
+  &__detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-5;
+    max-width: 720px;
+    margin: v.$space-6 auto 0;
+    text-align: left;
+
+    dt {
+      font-size: v.$fs-eyebrow;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: v.$color-orange;
+      margin-bottom: v.$space-1;
+    }
+
+    dd {
+      font-size: v.$fs-small;
+      color: v.$color-body;
+      margin: 0;
+    }
+
+    @include m.mq(v.$bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @include m.mq(v.$bp-md) {
     &__head {
       flex-direction: column;

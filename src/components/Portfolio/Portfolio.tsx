@@ -118,8 +118,29 @@ export default function Portfolio() {
           <div className="portfolio__detail">
             <h3>
               {active.title} <span className="portfolio__detail-arrow">↗</span>
+              <span className={`portfolio__status ${active.status === 'Upcoming Project' ? 'is-upcoming' : ''}`}>
+                {active.status}
+              </span>
             </h3>
             <p>{active.description}</p>
+            <dl className="portfolio__detail-grid">
+              <div>
+                <dt>Objective</dt>
+                <dd>{active.objective}</dd>
+              </div>
+              <div>
+                <dt>What Was Studied</dt>
+                <dd>{active.studied}</dd>
+              </div>
+              <div>
+                <dt>Contribution</dt>
+                <dd>{active.contribution}</dd>
+              </div>
+              <div>
+                <dt>Key Learning / Outcome</dt>
+                <dd>{active.outcome}</dd>
+              </div>
+            </dl>
           </div>
         )}
       </div>

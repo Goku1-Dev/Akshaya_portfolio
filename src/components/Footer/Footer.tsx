@@ -61,11 +61,18 @@ export default function Footer() {
             <div className="footer__col" key={col.title}>
               <h4>{col.title}</h4>
               <ul>
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}>{link}</a>
-                  </li>
-                ))}
+                {col.links.map((link) => {
+                  // Look up the real href from nav.links so labels like
+                  // "Projects" correctly resolve to #portfolio rather than
+                  // a slugified-but-nonexistent #projects anchor.
+                  const navMatch = nav.links.find((l) => l.label === link);
+                  const href = navMatch ? navMatch.href : `#${link.toLowerCase().replace(/\s+/g, '-')}`;
+                  return (
+                    <li key={link}>
+                      <a href={href}>{link}</a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

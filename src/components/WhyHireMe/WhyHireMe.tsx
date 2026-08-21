@@ -71,14 +71,23 @@ export default function WhyHireMe() {
               <AccentText parts={whyHireMe.title} />
             </h2>
             <p className="why-hire__desc">{whyHireMe.description}</p>
+            {whyHireMe.careerGoal && <p className="why-hire__desc why-hire__goal">{whyHireMe.careerGoal}</p>}
 
             <div className="why-hire__stats">
-              {whyHireMe.stats.map((stat) => (
-                <div className="why-hire__stat" key={stat.label}>
-                  <Counter value={stat.value} suffix={stat.suffix} />
-                  <span className="why-hire__stat-label">{stat.label}</span>
-                </div>
-              ))}
+              {whyHireMe.stats.map((stat) =>
+                typeof stat.value === 'number' ? (
+                  <div className="why-hire__stat" key={stat.label}>
+                    <Counter value={stat.value} suffix={stat.suffix ?? ''} />
+                    <span className="why-hire__stat-label">{stat.label}</span>
+                  </div>
+                ) : (
+                  // No verified numeric value yet — show the label as plain
+                  // placeholder text instead of animating a made-up number.
+                  <div className="why-hire__stat why-hire__stat--placeholder" key={stat.label}>
+                    <span className="why-hire__stat-label">{stat.label}</span>
+                  </div>
+                )
+              )}
             </div>
 
             <a className="btn-outline" href={whyHireMe.cta.href}>
