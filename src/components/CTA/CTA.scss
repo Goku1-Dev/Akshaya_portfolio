@@ -19,102 +19,10 @@
     }
   }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: v.$space-3;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  &__row {
-    display: flex;
-    gap: v.$space-3;
-  }
-
-  &__field {
-    flex: 1;
-    display: flex;
+  &__button {
+    display: inline-flex;
     align-items: center;
     gap: v.$space-2;
-    background: v.$color-cloud;
-    border: 1.5px solid transparent;
-    border-radius: v.$radius-pill;
-    padding-inline: v.$space-5;
-    color: v.$color-body;
-    transition: border-color v.$dur-fast v.$ease-out;
-
-    &:focus-within {
-      border-color: v.$color-orange;
-    }
-
-    input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      padding-block: 0.95rem;
-      font-size: v.$fs-body;
-      color: v.$color-ink;
-
-      &:focus {
-        outline: none;
-      }
-
-      &::placeholder {
-        color: v.$color-body;
-      }
-    }
-
-    svg {
-      flex-shrink: 0;
-    }
-  }
-
-  &__field--textarea {
-    border-radius: v.$radius-lg;
-    align-items: flex-start;
-    padding-block: v.$space-4;
-
-    textarea {
-      flex: 1;
-      border: none;
-      background: transparent;
-      font-size: v.$fs-body;
-      color: v.$color-ink;
-      resize: vertical;
-      min-height: 96px;
-      font-family: inherit;
-      line-height: 1.5;
-
-      &:focus {
-        outline: none;
-      }
-
-      &::placeholder {
-        color: v.$color-body;
-      }
-    }
-  }
-
-  &__submit {
-    margin-top: v.$space-2;
-    align-self: center;
-  }
-
-  &__feedback {
-    min-height: 1.4em;
-    margin-top: v.$space-3;
-    font-size: v.$fs-small;
-    font-weight: 600;
-    color: transparent;
-
-    &.is-success {
-      color: #1c9c6e;
-    }
-
-    &.is-error {
-      color: #e6483f;
-    }
   }
 
   &__trust {
@@ -135,16 +43,6 @@
 
     svg {
       color: v.$color-orange;
-    }
-  }
-
-  @include m.mq(v.$bp-sm) {
-    &__row {
-      flex-direction: column;
-    }
-
-    &__field {
-      padding-block: v.$space-1;
     }
   }
 }

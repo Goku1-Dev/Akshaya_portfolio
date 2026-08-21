@@ -393,7 +393,7 @@ export const cta = {
   description:
     'I am looking forward to my upcoming internship, gaining valuable clinical experience, and contributing to a dedicated critical care team.',
   placeholder: 'Enter Email Address',
-  button: 'Send',
+  button: 'Contact Email',
   trustPoints: [
     'Dedicated Critical Care Student',
     'Hands-On Clinical Exposure',
